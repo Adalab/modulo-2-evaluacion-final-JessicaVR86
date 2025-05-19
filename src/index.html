@@ -8,18 +8,31 @@
   </head>
   <body>
     <header class="headerbox">
-      <h1>Encuentra tus series anime preferidas</h1><br>
-
-      <form>
-        <label>Series</label>
-        <input type="text" placeholder="Escribe aqui" />
-        <button>Buscar</button>
-      </form>
+      <h1>Encuentra tus series anime preferidas</h1>
+      <br />
     </header>
+    <form>
+      <label>Series</label>
+      <input type="text" placeholder="Escribe aqui" />
+      <button class="js_searchbtn searchbtn">Buscar</button>
+    </form>
 
     <main class="mainbox">
-      <section class="sectionbox">Aqui tus series</section>
-      <aside class="asidebox">Aqui tus favoritos</aside>
+      <section class="sectionbox">
+        <p>Aqui tus series</p>
+        <ul class="js_movieslist ulbox">
+          <li class="cardbox">
+            <h6 class="cardtitle">Titulo</h6>
+            <img
+              src=""
+              alt=""
+              class="cardphoto"
+            />
+          </li>
+          
+        </ul>
+      </section>
+      <aside class="js_favouritelist asidebox"><p>Aqui tus favoritos</p></aside>
     </main>
 
     <script src="./js/main.js"></script>
