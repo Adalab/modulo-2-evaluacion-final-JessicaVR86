@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.headerbox{
+    text-align: center;
+    padding: 2rem;
+   
+}
+
+.mainbox{
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    
+}
