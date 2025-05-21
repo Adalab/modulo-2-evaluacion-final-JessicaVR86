@@ -1,3 +1,6 @@
+@use "./variable" as vars;
+@use './favourite';
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +8,7 @@
 }
 body {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  background-color: rgb(238, 160, 132);
+  background-color: var(--brand-lightcolor);
 }
 .headerbox {
   text-align: center;
@@ -69,20 +72,4 @@ h2 {
 
 .cardphoto {
   max-width: 200px;
-}
-.favourite {
-  border: solid 5px orangered;
-  border-radius: 7px;
-}
-
-.favouritebox {
-  background-color: orangered;
-  font-size: 1.3rem;
-  padding: 5px;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  list-style: none;
-  justify-items: center;
 }
