@@ -43,7 +43,7 @@ body {
 .mainbox {
   display: flex;
   justify-content: space-around;
-  padding: 2rem;
+  padding: 1rem;
 }
 h2 {
   padding: 10px;
@@ -52,7 +52,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   list-style: none;
   justify-items: center;
 }
@@ -63,6 +63,7 @@ h2 {
 }
 
 .cardtitle {
+  text-align: justify;
   color: white;
 }
 
@@ -78,5 +79,10 @@ h2 {
   background-color: orangered;
   font-size: 1.3rem;
   padding: 5px;
-  gap: 5px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  list-style: none;
+  justify-items: center;
 }

@@ -11,23 +11,12 @@
     <title>Document</title>
   </head>
   <body>
-    <header class="headerbox">
-      <h1 class="js_title">Encuentra tus series de anime preferidas</h1>
-      <br />
-    </header>
-    <form class="formbox">
-      <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-      <input class="searchtext" type="text" placeholder="Escribe aqui " />
-      <button class="js_searchbtn searchbtn">Buscar</button>
-      <button class="searchbtn" onclick="resetForm()">Reset</button>
-    </form>
-
+    <load src="partials/header.html" />
+    <load src="./partials/search.html" />
     <main class="mainbox">
       <section>
         <h2>Nuestras series</h2>
-        <ul class="js_movieslist ulbox">
-          <!-- AQUI ESTA MI <LI> -->
-        </ul>
+        <ul class="js_movieslist ulbox"></ul>
       </section>
       <section>
         <h2>Mis favoritos</h2>
