@@ -4,27 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./scss/main.scss" />
+    <script
+      src="https://kit.fontawesome.com/66349fc88a.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Document</title>
   </head>
   <body>
     <header class="headerbox">
-      <h1>Encuentra tus series de anime preferidas</h1>
+      <h1 class="js_title">Encuentra tus series de anime preferidas</h1>
       <br />
     </header>
     <form class="formbox">
-      <label>Series</label>
+      <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
       <input class="searchtext" type="text" placeholder="Escribe aqui " />
       <button class="js_searchbtn searchbtn">Buscar</button>
+      <button class="searchbtn" onclick="resetForm()">Reset</button>
     </form>
 
     <main class="mainbox">
-      <section class="sectionbox">
-        <p>Aqui tus series</p>
+      <section>
+        <h2>Nuestras series</h2>
         <ul class="js_movieslist ulbox">
           <!-- AQUI ESTA MI <LI> -->
         </ul>
       </section>
-      <aside class="js_favouritelist asidebox"><p>Aqui tus favoritos</p></aside>
+      <section>
+        <h2>Mis favoritos</h2>
+
+        <ul class="js_favouritelist favouritebox"></ul>
+      </section>
     </main>
 
     <script src="./js/main.js"></script>

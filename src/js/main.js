@@ -1,43 +1,25 @@
 "use strict";
 
+const title = document.querySelector(".js_title");
 const searchText = document.querySelector(".searchtext");
 const searchBtn = document.querySelector(".js_searchbtn");
 const moviesUl = document.querySelector(".js_movieslist");
+const favouriteList = document.querySelector(".js_favouritelist");
 
 let animeCards = [];
-const animeCard = {};
+let favCards = [];
 
-const renderAllCards = () => {
-  let html = "";
-  for (const animeCard of animeCards) {
-    html += renderOneCard(animeCard);
-  }
-  moviesUl.innerHTML = html;
-  
-  const selectCards = document.querySelectorAll(".js_select_card");
-  for (const selectCard of selectCards) {
-    selectCard.addEventListener("click", handleClickFav);
-  }
-};
-
-const handleClickFav = (ev)=>{
-  const clicked = ev.currentTarget;
-  clicked.classList.toggle('favourite');
-
-}
-
-fetch("https://api.jikan.moe/v4/anime?q=naruto")
-  .then((response) => response.json())
-  .then((data) => {
-    animeCards = data.data;
-    renderAllCards();
-  });
-
+title.addEventListener("mouseover", () => {
+  title.classList.add("title");
+});
+title.addEventListener("mouseout", () => {
+  title.classList.remove("title");
+});
 
 const renderOneCard = (animeCard) => {
   let html = "";
   if (!animeCard.images) {
-    html = `<li class="cardbox js_select_card">
+    html = `<li class="cardbox js_select_card " data-identity= "${animeCard.mal_id}" >
             <h6 class="cardtitle">  ${animeCard.title} </h6><br>
             <img
               src="https://placehold.co/210x300/ffffff/555555?text=TV"
@@ -46,7 +28,7 @@ const renderOneCard = (animeCard) => {
             />
           </li>`;
   } else {
-    html = `<li class="cardbox js_select_card">
+    html = `<li class="cardbox js_select_card" data-identity= "${animeCard.mal_id}">
             <h6 class="cardtitle">  ${animeCard.title} </h6><br>
             <img
               src=" ${animeCard.images.jpg.image_url}"
@@ -63,7 +45,6 @@ const handleClickBtn = (ev) => {
   ev.preventDefault();
 
   const search = searchText.value;
-
   fetch(`https://api.jikan.moe/v4/anime?q=${search}`)
     .then((response) => response.json())
     .then((data) => {
@@ -73,4 +54,52 @@ const handleClickBtn = (ev) => {
 };
 searchBtn.addEventListener("click", handleClickBtn);
 
-///  FAVORITOS
+const renderAllCards = () => {
+  let html = "";
+  for (const animeCard of animeCards) {
+    html += renderOneCard(animeCard);
+  }
+  moviesUl.innerHTML = html;
+
+  const selectCards = document.querySelectorAll(".js_select_card");
+  for (const selectCard of selectCards) {
+    selectCard.addEventListener("click", handleClickFav);
+  }
+};
+
+function renderAllFavCards() {
+  let html = "";
+  for (const animeCard of favCards) {
+    html += renderOneCard(animeCard);
+  }
+  favouriteList.innerHTML = html;
+}
+
+const handleClickFav = (ev) => {
+  const clicked = ev.currentTarget;
+  clicked.classList.toggle("favourite");
+  const identityMovie = parseInt(clicked.dataset.identity);
+
+  const movieFavClick = favCards.findIndex(
+    (animeCard) => animeCard.mal_id === identityMovie
+  );
+  if (movieFavClick === -1) {
+    const movieFavObj = animeCards.find(
+      (animeCard) => animeCard.mal_id === identityMovie
+    );
+    favCards.push(movieFavObj);
+    localStorage.setItem("favouriteCards", JSON.stringify(favCards));
+    const htmlPrint = renderOneCard(movieFavObj);
+    favouriteList.innerHTML += htmlPrint;
+  } else {
+    favCards.splice(movieFavClick, 1);
+    renderAllFavCards();
+  }
+};
+
+fetch("https://api.jikan.moe/v4/anime?q=naruto")
+  .then((response) => response.json())
+  .then((data) => {
+    animeCards = data.data;
+    renderAllCards();
+  });
