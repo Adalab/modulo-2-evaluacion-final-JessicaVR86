@@ -1,7 +1,7 @@
 # Buscador de series Anime.
 Página web dedicada a la búsqueda de series anime utilizando la API de Jikan.
 
-## Funcionalizades.
+## Funcionalidades.
 - Buscar Anime por el título o alguna palabra coincidente.
 - Nos muestra el resultado de la búsqueda.
 - Una vez localizada la serie tenemos la opción de añadirlo a una sección de favoritos.

@@ -21,6 +21,7 @@ const renderOneCard = (animeCard) => {
   if (!animeCard.images) {
     html = `<li class="cardbox js_select_card " data-identity= "${animeCard.mal_id}" >
             <h6 class="cardtitle">  ${animeCard.title} </h6><br>
+            <p>${animeCard.episodes} </p>
             <img
               src="https://placehold.co/210x300/ffffff/555555?text=TV"
               alt=""
@@ -30,6 +31,7 @@ const renderOneCard = (animeCard) => {
   } else {
     html = `<li class="cardbox js_select_card" data-identity= "${animeCard.mal_id}">
             <h6 class="cardtitle">  ${animeCard.title} </h6><br>
+            <p>${animeCard.episodes} </p>
             <img
               src=" ${animeCard.images.jpg.image_url}"
               alt=""
@@ -40,6 +42,16 @@ const renderOneCard = (animeCard) => {
 
   return html;
 };
+
+const logBtn = document.querySelector('.js_logbtn');
+const handleClickLogBtn =(ev)=>{
+  ev.preventDefault();
+  console.log()
+  animeCards(animeCards.title)
+   console.log()
+}
+
+logBtn.addEventListener('click',  handleClickLogBtn);
 
 const handleClickBtn = (ev) => {
   ev.preventDefault();
